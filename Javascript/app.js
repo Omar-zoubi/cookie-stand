@@ -1,319 +1,135 @@
 'use strict'
 let workHour=['06:00 AM','07:00 AM','08:00 AM','09:00 AM','10:00 AM','11:00 AM','12:00 PM','01:00 PM','02:00 PM','03:00 PM','04:00 PM','05:00 PM','06:00 PM','07:00 PM']
 
-let seatle ={
-    locNmae: 'seatle',
-    maxNumOfCst: 65,
-    minNumOfCst:23,
-    avgCstCookeis:6.3,
-    randomNumber:function(max,min){
-       return Math.floor(Math.random() * (max - min + 1) + min);
-    }
-    ,
-    randomfun: function(){
-        let randomArr=[];
-        for(let i=0;i<=13;i++)
-        {
-            randomArr[i]=this.randomNumber(this.maxNumOfCst,this.minNumOfCst);
-            
-        }
-        return randomArr;
-    },
-
-    expResult: function(){
-       let randomArr= this.randomfun();
-       let resArr=[];
-      for (let i =0; i <=13 ;i ++)
-      {
-          resArr[i]=Math.floor(randomArr[i]*this.avgCstCookeis);
-      } 
-      return resArr;
-    },
-    totalfun: function(){
-        let totalNum=0;
-        for(let i=0; i< this.expResult().length; i++)
-        {
-            totalNum=totalNum+this.expResult()[i];
-        }
-        return Math.floor(totalNum);
-    }
+function Location (locNmae,minNumOfCst,maxNumOfCst,avgCstCookeis) {
+    this.locNmae=locNmae;
+    this.maxNumOfCst=maxNumOfCst;
+    this.minNumOfCst= minNumOfCst;
+    this.avgCstCookeis=avgCstCookeis;
+    this.cstSoldPerHour=[];
+    this.cookiesSoldPerHour=[];
+    this.total=0;
+    
+    
 
   
 
 
 }
-
+Location.prototype.randomNumber =function(){
+    let x = Math.floor(Math.random() * (this.maxNumOfCst - this.minNumOfCst + 1) + this.minNumOfCst);
     
+            return Math.floor(Math.random() * (this.maxNumOfCst - this.minNumOfCst + 1) + this.minNumOfCst);
+       }
 
-let tokeyo ={
-    locNmae: 'Tokeye',
-    maxNumOfCst: 24,
-    minNumOfCst:3,
-    avgCstCookeis:1.2,
-    randomNumber:function(max,min){
-       return Math.floor(Math.random() * (max - min + 1) + min);
-    }
-    ,
-    randomfun: function(){
-        let randomArr=[];
-        for(let i=0;i<=13;i++)
-        {
-            randomArr[i]= this.randomNumber(this.maxNumOfCst,this.minNumOfCst);
-            
-        }
-        return randomArr;
-    },
-
-    expResult: function(){
-       let randomArr= this.randomfun();
-       let resArr=[];
-      for (let i =0; i <=13 ;i ++)
-      {
-          resArr[i]=Math.floor(randomArr[i]*this.avgCstCookeis);
-      } 
-      return resArr;
-    },
-    totalfun: function(){
-        let totalNum=0;
-        for(let i=0; i< this.expResult().length; i++)
-        {
-            totalNum=totalNum+this.expResult()[i];
-        }
-        return Math.floor(totalNum);
-    }
-
-  
-
-
-}
-
-let dubai ={
-     locNmae : 'Dubai',
-    maxNumOfCst: 38,
-    minNumOfCst:11,
-    avgCstCookeis:3.7,
-    randomNumber:function(max,min){
-       return Math.floor(Math.random() * (max - min + 1) + min);
-    }
-    ,
-    randomfun: function(){
-        let randomArr=[];
-        for(let i=0;i<=13;i++)
-        {
-            randomArr[i]= this.randomNumber(this.maxNumOfCst,this.minNumOfCst);
-            
-        }
-        return randomArr;
-    },
-
-    expResult: function(){
-       let randomArr= this.randomfun();
-       let resArr=[];
-      for (let i =0; i <=13 ;i ++)
-      {
-          resArr[i]=Math.floor(randomArr[i]*this.avgCstCookeis);
-      } 
-      return resArr;
-    },
-    totalfun: function(){
-        let totalNum=0;
-        for(let i=0; i< this.expResult().length; i++)
-        {
-            totalNum+=this.expResult()[i];
-        }
-        return Math.floor( totalNum);
-    }
-
-
-
-}
-
-let paris ={
-    locNmae: 'Paris',
-    maxNumOfCst: 38,
-    minNumOfCst: 20,
-    avgCstCookeis:2.3,
-    randomNumber:function(max,min){
-       return Math.floor(Math.random() * (max - min + 1) + min);
-    }
-    ,
-    randomfun: function(){
-        let randomArr=[];
-        for(let i=0;i<=13;i++)
-        {
-            randomArr[i]= this.randomNumber(this.maxNumOfCst,this.minNumOfCst);
-            
-        }
-        return randomArr;
-    },
-
-    expResult: function(){
-       let randomArr= this.randomfun();
-       let resArr=[];
-      for (let i =0; i <=13 ;i ++)
-      {
-          resArr[i]=Math.floor( randomArr[i]*this.avgCstCookeis);
-      } 
-      return resArr;
-    },
-    totalfun: function(){
-        let totalNum=0;
-        for(let i=0; i< this.expResult().length; i++)
-        {
-            totalNum+=this.expResult()[i];
-        }
-        return Math.floor( totalNum);
-    }
-
-
-
-}
-let lima ={
-    locNmae: 'Lima',
-    maxNumOfCst: 16,
-    minNumOfCst:2,
-    avgCstCookeis:4.6,
-    randomNumber:function(max,min){
-       return Math.floor(Math.random() * (max - min + 1) + min);
-    }
-    ,
-    randomfun: function(){
-        let randomArr=[];
-        for(let i=0;i<=13;i++)
-        {
-            randomArr[i]= this.randomNumber(this.maxNumOfCst,this.minNumOfCst);
-            
-        }
-        return randomArr;
-    },
-
-    expResult: function(){
-       let randomArr= this.randomfun();
-       let resArr=[];
-      for (let i =0; i <=13 ;i ++)
-      {
-          resArr[i]=Math.floor (randomArr[i]*this.avgCstCookeis);
-      } 
-      return resArr;
-    },
-    totalfun: function(){
-        let totalNum=0;
-        for(let i=0; i< this.expResult().length; i++)
-        {
-            totalNum+=this.expResult()[i];
-        }
-        
-        return Math.floor(totalNum);
-    }
-
-
-
-}
-
-function render_seatle (){
-    let divEl = document.getElementById('Newdiv2');
-    let h2El = document.createElement('h2');
-    divEl.appendChild(h2El);
-    h2El.textContent=`${seatle.locNmae}`
-
-
-    let ulEl = document.createElement('ul');
-    divEl.appendChild(ulEl);
-    for (let i=0; i< seatle.expResult().length ;i++ ){
-    let liEl =document.createElement('li')
-    ulEl.appendChild(liEl)
-    liEl.textContent=`${workHour[i]} : ${seatle.expResult()[i]} cookeis`
-    }
-    let liEl =document.createElement('li')
-    ulEl.appendChild(liEl)
-    liEl.textContent=`Total : ${seatle.totalfun()} cookeis`
-
-}
-
-
-function render_tokeyo (){
-    let divEl = document.getElementById('Newdiv2');
-    let h2El = document.createElement('h2');
-    divEl.appendChild(h2El);
-    h2El.textContent=`${tokeyo.locNmae}`
-
-
-    let ulEl = document.createElement('ul');
-    divEl.appendChild(ulEl);
-    for (let i=0; i< tokeyo.expResult().length ;i++ ){
-    let liEl =document.createElement('li')
-    ulEl.appendChild(liEl)
-    liEl.textContent=`${workHour[i]} : ${tokeyo.expResult()[i]} cookeis`
-    }
-    let liEl =document.createElement('li')
-    ulEl.appendChild(liEl)
-    liEl.textContent=`Total : ${tokeyo.totalfun()} cookeis`
-
-}
-
-
-function render_Dubai (){
-    let divEl = document.getElementById('Newdiv3');
-    let h2El = document.createElement('h2');
-    divEl.appendChild(h2El);
-    h2El.textContent=`${dubai.locNmae}`
-
-    let ulEl = document.createElement('ul');
-    divEl.appendChild(ulEl);
-    for (let i=0; i< dubai.expResult().length ;i++ ){
-    let liEl =document.createElement('li')
-    ulEl.appendChild(liEl)
-    liEl.textContent=`${workHour[i]} : ${dubai.expResult()[i]} cookeis`
-    }
-    let liEl =document.createElement('li')
-    ulEl.appendChild(liEl)
-    liEl.textContent=`Total : ${dubai.totalfun()} cookeis`
-
-}
-
-
-function render_paris (){
-    let divEl = document.getElementById('Newdiv4');
-    let h2El = document.createElement('h2');
-    divEl.appendChild(h2El);
-    h2El.textContent=`${paris.locNmae}`
-
-    let ulEl = document.createElement('ul');
-    divEl.appendChild(ulEl);
-    for (let i=0; i< paris.expResult().length ;i++ ){
-    let liEl =document.createElement('li')
-    ulEl.appendChild(liEl)
-    liEl.textContent=`${workHour[i]} : ${paris.expResult()[i]} cookeis`
-    }
-    let liEl =document.createElement('li')
-    ulEl.appendChild(liEl)
-    liEl.textContent=`Total : ${paris.totalfun()} cookeis`
-
-}
-
-function render_Lima (){
-    let divEl = document.getElementById('Newdiv5');
-    let h2El = document.createElement('h2');
-    divEl.appendChild(h2El);
-    h2El.textContent=`${lima.locNmae}`
-
-    let ulEl = document.createElement('ul');
-    divEl.appendChild(ulEl);
-    for (let i=0; i< lima.expResult().length ;i++ ){
-    let liEl =document.createElement('li')
-    ulEl.appendChild(liEl)
-    liEl.textContent=`${workHour[i]} : ${lima.expResult()[i]} cookeis`
-    }
-    let liEl =document.createElement('li')
-    ulEl.appendChild(liEl)
-    liEl.textContent=`Total : ${lima.totalfun()} cookeis`
+ Location.prototype.randomFun = function(){
     
+     for (let i =0 ;i < workHour.length ;i++)
+     {
+    this.cstSoldPerHour.push(this.randomNumber());
 
+         this.cstSoldPerHour.push(this.randomNumber());
+         
+     }
+}
+
+Location.prototype.expResult =function()
+{
+    for(let i=0;i<this.cstSoldPerHour.length;i++)
+    {
+        this.cookiesSoldPerHour.push(this.cstSoldPerHour[i]*Math.floor(this.avgCstCookeis));
+    }
+}
+Location.prototype.totalfun =function(){
+    for(let i=0;i<this.cookiesSoldPerHour.length;i++)
+    {this.total=this.total+this.cookiesSoldPerHour[i];}
 }
 
 
-render_seatle();
-render_tokeyo();
-render_Dubai();
-render_paris();
-render_Lima();
+
+let seatle= new Location('Seatle',65,3,6.3);
+seatle.randomNumber();
+seatle.randomFun();
+seatle.expResult();
+seatle.totalfun();
+
+let tokeyo =new Location('Tokeyo',24,3,1.2);
+tokeyo.randomNumber();
+tokeyo.randomFun();
+tokeyo.expResult();
+tokeyo.totalfun();
+
+let dubai =new Location('Dubai',38,11,3.8);
+dubai.randomNumber();
+dubai.randomFun();
+dubai.expResult();
+dubai.totalfun();
+let paries =new Location('Paries',38,20,2.3);
+paries.randomNumber();
+paries.randomFun();
+paries.expResult();
+paries.totalfun();
+let lima =new Location('Lima',16,2,4.6);
+lima.randomNumber();
+lima.randomFun();
+lima.expResult();
+lima.totalfun();
+
+
+let divEl = document.getElementById('Newdiv');
+let table =document.createElement('table');
+divEl.appendChild(table);
+function render_header()
+{
+    
+    let trEl=document.createElement('tr');
+        table.appendChild(trEl);
+
+        let thEl=document.createElement('th')
+        trEl.appendChild(thEl);
+        thEl.textContent=' ';
+
+    for (let i=0; i< workHour.length ;i++ ){
+        let thEl=document.createElement('th')
+        trEl.appendChild(thEl);
+        thEl.textContent= workHour[i];
+
+
+    }
+    let thEl1=document.createElement('th');
+    trEl.appendChild(thEl1);
+    thEl1.textContent= 'Daily Location Total';
+
+}
+
+Location.prototype.render_Table =function()
+{
+    
+    let trEl=document.createElement('tr');
+        table.appendChild(trEl);
+
+        let tdEl=document.createElement('td')
+        trEl.appendChild(tdEl);
+        tdEl.textContent=this.locNmae;
+
+    for (let i=0; i< workHour.length ;i++ ){
+        let tdEl=document.createElement('td')
+        trEl.appendChild(tdEl);
+        tdEl.textContent= this.cookiesSoldPerHour[i];
+
+
+    }
+    let tdEl1=document.createElement('td');
+    trEl.appendChild(tdEl1);
+    tdEl1.textContent= this.total;
+
+}
+
+render_header();
+seatle.render_Table();
+tokeyo.render_Table();
+dubai.render_Table();
+paries.render_Table();
+lima.render_Table();
+
+
