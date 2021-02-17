@@ -1,6 +1,7 @@
 'use strict'
 let workHour=['06:00 AM','07:00 AM','08:00 AM','09:00 AM','10:00 AM','11:00 AM','12:00 PM','01:00 PM','02:00 PM','03:00 PM','04:00 PM','05:00 PM','06:00 PM','07:00 PM']
-
+let totalArray =[0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+let grandTotal=0;
 function Location (locNmae,minNumOfCst,maxNumOfCst,avgCstCookeis) {
     this.locNmae=locNmae;
     this.maxNumOfCst=maxNumOfCst;
@@ -38,43 +39,29 @@ Location.prototype.expResult =function()
     for(let i=0;i<this.cstSoldPerHour.length;i++)
     {
         this.cookiesSoldPerHour.push(this.cstSoldPerHour[i]*Math.floor(this.avgCstCookeis));
+        totalArray[i]=totalArray[i]+ this.cookiesSoldPerHour[i];
     }
 }
 Location.prototype.totalfun =function(){
     for(let i=0;i<this.cookiesSoldPerHour.length;i++)
     {this.total=this.total+this.cookiesSoldPerHour[i];}
+    grandTotal+=this.total;
 }
 
-
-
 let seatle= new Location('Seatle',65,3,6.3);
-seatle.randomNumber();
-seatle.randomFun();
-seatle.expResult();
-seatle.totalfun();
-
 let tokeyo =new Location('Tokeyo',24,3,1.2);
-tokeyo.randomNumber();
-tokeyo.randomFun();
-tokeyo.expResult();
-tokeyo.totalfun();
-
 let dubai =new Location('Dubai',38,11,3.8);
-dubai.randomNumber();
-dubai.randomFun();
-dubai.expResult();
-dubai.totalfun();
 let paries =new Location('Paries',38,20,2.3);
-paries.randomNumber();
-paries.randomFun();
-paries.expResult();
-paries.totalfun();
 let lima =new Location('Lima',16,2,4.6);
-lima.randomNumber();
-lima.randomFun();
-lima.expResult();
-lima.totalfun();
 
+let obj_Arr=[seatle,tokeyo,dubai,paries,lima]
+for (let i =0;i <obj_Arr.length;i++)
+{
+    obj_Arr[i].randomNumber();
+    obj_Arr[i].randomFun();
+    obj_Arr[i].expResult();
+    obj_Arr[i].totalfun();
+}
 
 let divEl = document.getElementById('Newdiv');
 let table =document.createElement('table');
@@ -124,12 +111,32 @@ Location.prototype.render_Table =function()
     tdEl1.textContent= this.total;
 
 }
+function render_footer()
+{
+    
+    let trEl=document.createElement('tr');
+        table.appendChild(trEl);
 
+        let thEl=document.createElement('th')
+        trEl.appendChild(thEl);
+        thEl.textContent="Total ";
+
+    for (let i=0; i< workHour.length ;i++ ){
+        let thEl=document.createElement('th')
+        trEl.appendChild(thEl);
+        thEl.textContent= totalArray[i];
+
+
+    }
+    let thEl1=document.createElement('th');
+    trEl.appendChild(thEl1);
+    thEl1.textContent= grandTotal;
+
+}
 render_header();
-seatle.render_Table();
-tokeyo.render_Table();
-dubai.render_Table();
-paries.render_Table();
-lima.render_Table();
 
+for (let i =0;i <obj_Arr.length;i++)
+{obj_Arr[i].render_Table();}
+
+render_footer();
 
