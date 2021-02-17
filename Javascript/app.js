@@ -113,24 +113,23 @@ Location.prototype.render_Table =function()
 }
 function render_footer()
 {
-    
-    let trEl=document.createElement('tr');
-        table.appendChild(trEl);
-
-        let thEl=document.createElement('th')
-        trEl.appendChild(thEl);
+            let footer = table.createTFoot();
+        let thEl = document.createElement('th');
+        footer.appendChild(thEl)
         thEl.textContent="Total ";
-
+ 
     for (let i=0; i< workHour.length ;i++ ){
-        let thEl=document.createElement('th')
-        trEl.appendChild(thEl);
-        thEl.textContent= totalArray[i];
+       
+        let thEl = document.createElement('th');
+        footer.appendChild(thEl)
+        thEl.textContent=totalArray[i];
+        
 
 
     }
-    let thEl1=document.createElement('th');
-    trEl.appendChild(thEl1);
-    thEl1.textContent= grandTotal;
+    let thEl1 = document.createElement('th');
+        footer.appendChild(thEl1)
+        thEl1.textContent=grandTotal;
 
 }
 render_header();
@@ -138,5 +137,43 @@ render_header();
 for (let i =0;i <obj_Arr.length;i++)
 {obj_Arr[i].render_Table();}
 
+
+
+
+
+const form =document.getElementById('NewLocation');
+form.addEventListener('submit',locationcreator);
+function locationcreator(event){
+
+    event.preventDefault();
+
+    let name =event.target.locname.value;
+    let max= event.target.maxcst.value;
+    parseInt(max);
+    let min= event.target.mincst.value;
+    parseInt(min);
+    let avg=event.target.avgcooke.value;
+    parseFloat(avg);
+    let  newLocation= new Location( name ,max,min,avg);
+    newLocation.randomNumber();
+    newLocation.randomFun();
+    newLocation.expResult();
+    newLocation.totalfun();
+    newLocation.render_Table();
+
+    
+   
+
+
+}
 render_footer();
+
+
+
+
+
+
+
+
+
 
