@@ -1,6 +1,7 @@
 'use strict'
 let workHour=['06:00 AM','07:00 AM','08:00 AM','09:00 AM','10:00 AM','11:00 AM','12:00 PM','01:00 PM','02:00 PM','03:00 PM','04:00 PM','05:00 PM','06:00 PM','07:00 PM']
 let totalArray =[0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+let obj_Arr=[]
 let grandTotal=0;
 function Location (locNmae,minNumOfCst,maxNumOfCst,avgCstCookeis) {
     this.locNmae=locNmae;
@@ -10,6 +11,7 @@ function Location (locNmae,minNumOfCst,maxNumOfCst,avgCstCookeis) {
     this.cstSoldPerHour=[];
     this.cookiesSoldPerHour=[];
     this.total=0;
+    obj_Arr.push(this);
     
     
 
@@ -54,7 +56,7 @@ let dubai =new Location('Dubai',38,11,3.8);
 let paries =new Location('Paries',38,20,2.3);
 let lima =new Location('Lima',16,2,4.6);
 
-let obj_Arr=[seatle,tokeyo,dubai,paries,lima]
+
 for (let i =0;i <obj_Arr.length;i++)
 {
     obj_Arr[i].randomNumber();
@@ -62,6 +64,7 @@ for (let i =0;i <obj_Arr.length;i++)
     obj_Arr[i].expResult();
     obj_Arr[i].totalfun();
 }
+
 
 let divEl = document.getElementById('Newdiv');
 let table =document.createElement('table');
@@ -148,26 +151,26 @@ function locationcreator(event){
     event.preventDefault();
 
     let name =event.target.locname.value;
-    let max= event.target.maxcst.value;
+    let max= event.target.mincst.value;
     parseInt(max);
-    let min= event.target.mincst.value;
+    let min= event.target.maxcst.value;
     parseInt(min);
     let avg=event.target.avgcooke.value;
     parseFloat(avg);
+    
     let  newLocation= new Location( name ,max,min,avg);
     newLocation.randomNumber();
     newLocation.randomFun();
     newLocation.expResult();
     newLocation.totalfun();
     newLocation.render_Table();
-
+    
     
    
 
 
 }
 render_footer();
-
 
 
 
