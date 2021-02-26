@@ -113,7 +113,7 @@ Location.prototype.render_Table =function()
 }
 function render_footer()
 {
-            let footer = table.createTFoot();
+        let footer = table.createTFoot();
         let thEl = document.createElement('th');
         footer.appendChild(thEl)
         thEl.textContent="Total ";
